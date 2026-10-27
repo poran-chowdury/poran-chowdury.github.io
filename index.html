@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poran Chowdury · Software Engineer</title>
+  <meta name="description" content="Poran Chowdury, Software Engineer. Building scalable backend systems and reliable digital experiences with Java, Spring Boot and microservices." />
+  <meta name="author" content="Poran Chowdury" />
+  <meta name="theme-color" content="#05070d" />
+  <meta property="og:title" content="Poran Chowdury · Software Engineer" />
+  <meta property="og:description" content="Building scalable backend systems and reliable digital experiences." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/banner-1920x1080.png" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <header class="nav" id="top">
+    <a class="brand" href="#top" aria-label="Poran Chowdury, home">
+      <span class="brand-mark">PC</span>
+      <span class="brand-text">Poran Chowdury</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#expertise">Expertise</a>
+      <a href="#projects">Projects</a>
+      <a href="#ai">AI-assisted</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Contact me</a>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="status reveal"><span class="pulse"></span>Poran Chowdury · Open to backend roles</p>
+        <h1 class="reveal"><span class="grad">Software</span><br />Engineer</h1>
+        <p class="subtitle reveal">Building Scalable Backend Systems &amp; Reliable Digital Experiences.</p>
+        <p class="intro reveal">I design and develop secure, scalable, and high-performance backend applications that solve real-world problems.</p>
+        <div class="cta reveal">
+          <a class="btn btn-primary" href="#projects">View Projects <span aria-hidden="true">→</span></a>
+          <a class="btn btn-glass" href="#contact">Contact Me</a>
+        </div>
+        <ul class="stack reveal" aria-label="Core technologies">
+          <li>Java</li><li>Spring Boot</li><li>REST APIs</li><li>Microservices</li><li>PostgreSQL</li>
+          <li>MongoDB</li><li>Redis</li><li>RabbitMQ</li><li>Docker</li><li>Kubernetes</li><li>Azure</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <!-- Code editor -->
+        <div class="editor glass">
+          <div class="editor-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="tab active">TransferService.java</span>
+            <span class="tab">LedgerPort.java</span>
+          </div>
+          <pre class="code"><code><span class="ln">1</span><span class="an">@Transactional</span>
+<span class="ln">2</span><span class="kw">public</span> Transfer <span class="fn">execute</span>(TransferRequest req) {
+<span class="ln">3</span>  <span class="cm">// same key twice → same result, never twice the money</span>
+<span class="ln">4</span>  <span class="kw">return</span> transfers.<span class="fn">findByIdempotencyKey</span>(req.key())
+<span class="ln">5</span>      .<span class="fn">orElseGet</span>(() -&gt; locks.<span class="fn">withOwnedLock</span>(
+<span class="ln">6</span>          req.accountId(),
+<span class="ln">7</span>          () -&gt; ledger.<span class="fn">post</span>(Entry.<span class="fn">doubleEntry</span>(req))));
+<span class="ln">8</span>}<span class="caret"></span></code></pre>
+        </div>
+
+        <!-- API request visual -->
+        <div class="api glass">
+          <div class="api-row"><span class="verb">POST</span><span class="path">/api/v1/transfers</span></div>
+          <div class="api-head">Idempotency-Key: 7f3c-91ab</div>
+          <div class="api-res"><span class="ok">201</span> Created</div>
+          <div class="api-retry"><span class="retry">retry</span> same key → <span class="ok">200</span> same transfer</div>
+        </div>
+
+        <!-- Mini architecture -->
+        <div class="mini-arch glass">
+          <svg viewBox="0 0 260 150" role="img" aria-label="Request flow from gateway through services to an event bus">
+            <defs>
+              <linearGradient id="mg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="260" y2="0"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+            </defs>
+            <g class="flow" fill="none" stroke="url(#mg)" stroke-width="1.6">
+              <path d="M58 75 H92"/><path d="M152 45 H188"/><path d="M152 105 H188"/>
+              <path d="M122 60 V40 M122 90 V110"/>
+            </g>
+            <g class="node"><rect x="8" y="58" width="50" height="34" rx="8"/><text x="33" y="79">Client</text></g>
+            <g class="node"><rect x="92" y="58" width="60" height="34" rx="8"/><text x="122" y="79">Gateway</text></g>
+            <g class="node"><rect x="92" y="14" width="60" height="28" rx="8"/><text x="122" y="32">Service</text></g>
+            <g class="node"><rect x="92" y="108" width="60" height="28" rx="8"/><text x="122" y="126">Service</text></g>
+            <g class="node accent"><rect x="188" y="30" width="64" height="30" rx="8"/><text x="220" y="49">Event bus</text></g>
+            <g class="node"><rect x="188" y="90" width="64" height="30" rx="8"/><text x="220" y="109">Database</text></g>
+          </svg>
+        </div>
+
+        <!-- Floating badges -->
+        <span class="float f1 glass">☕ Java 21</span>
+        <span class="float f2 glass">🌱 Spring Boot</span>
+        <span class="float f3 glass">🐳 Docker</span>
+        <span class="float f4 glass">☸ Kubernetes</span>
+      </div>
+    </section>
+
+    <!-- ============ EXPERTISE ============ -->
+    <section id="expertise" class="section">
+      <header class="section-head reveal">
+        <p class="kicker">01 · Expertise</p>
+        <h2>What I bring to a backend team</h2>
+        <p class="sub">5+ years in Java and Spring Boot, most of it as the primary backend engineer of a multi-tenant crypto exchange that handles real customer funds.</p>
+      </header>
+      <div class="expertise">
+        <article class="exp glass reveal">
+          <div class="exp-icon">{ }</div>
+          <h3>Backend Engineering</h3>
+          <p>Java and Spring Boot services for trading, custody, payments and identity, with Node.js where the platform needs it.</p>
+        </article>
+        <article class="exp glass reveal">
+          <div class="exp-icon">⇄</div>
+          <h3>Distributed Systems</h3>
+          <p>Idempotency keys end to end, owner-checked distributed locks and reconciliation against the source of truth.</p>
+        </article>
+        <article class="exp glass reveal">
+          <div class="exp-icon">▦</div>
+          <h3>Microservices Architecture</h3>
+          <p>Event-driven services over RabbitMQ, a shared platform library, database-per-tenant routing and hexagonal cores.</p>
+        </article>
+        <article class="exp glass reveal">
+          <div class="exp-icon">⌁</div>
+          <h3>API Design &amp; Integration</h3>
+          <p>Contract-first REST APIs and Server-Sent Events, plus integrations with Fireblocks, Hyperliquid, LI.FI, Auth0 and KYC providers.</p>
+        </article>
+        <article class="exp glass reveal">
+          <div class="exp-icon">◫</div>
+          <h3>Database Optimization</h3>
+          <p>MongoDB, PostgreSQL and Redis: query rework, page-size caps and rate limiting on heavy endpoints, and indexed, cached market data.</p>
+        </article>
+        <article class="exp glass reveal">
+          <div class="exp-icon">☁</div>
+          <h3>Cloud &amp; DevOps</h3>
+          <p>Docker, Kubernetes on Azure AKS, GitHub Actions across three environments, OpenTelemetry tracing and secrets in Key Vault.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section">
+      <header class="section-head reveal">
+        <p class="kicker">02 · Projects</p>
+        <h2>Production work</h2>
+        <p class="sub">Features I built for X4T, a multi-tenant crypto exchange, at SELISE Digital Platforms.</p>
+      </header>
+
+      <div class="projects">
+        <article class="project glass reveal featured">
+          <div class="project-top"><span class="badge">Featured</span><span class="area">Trading</span></div>
+          <h3>Perpetual futures trading</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Add leveraged trading to a custodial exchange without risking customer funds.</dd></div>
+            <div><dt>Approach</dt><dd>A hexagonal core across Java and Node.js, fail-fast pre-trade risk checks, order signing through custody, and reconciliation against the exchange.</dd></div>
+            <div><dt>Result</dt><dd>From first idea to production in about three weeks, with ~1,700 automated tests.</dd></div>
+          </dl>
+          <ul class="tags"><li>Java</li><li>Node.js</li><li>Hyperliquid</li><li>Hexagonal</li></ul>
+        </article>
+
+        <article class="project glass reveal">
+          <div class="project-top"><span class="area">Blockchain</span></div>
+          <h3>Cross-chain trading</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Let users swap across chains that work very differently.</dd></div>
+            <div><dt>Approach</dt><dd>Pluggable adapters for Bitcoin, Solana, Tron and EVM chains; only routes that will complete are offered.</dd></div>
+            <div><dt>Result</dt><dd>Live per-chain fees let small balances trade in full.</dd></div>
+          </dl>
+          <ul class="tags"><li>LI.FI</li><li>EVM</li><li>Solana</li><li>Bitcoin</li></ul>
+        </article>
+
+        <article class="project glass reveal">
+          <div class="project-top"><span class="area">Reliability</span></div>
+          <h3>Retry-safe money movement</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Retries and replayed webhooks must never move money twice.</dd></div>
+            <div><dt>Approach</dt><dd>End-to-end idempotency keys, owner-checked Redis locks and terminal-state guards.</dd></div>
+            <div><dt>Result</dt><dd>Fixed a production race that had created duplicate custody vaults.</dd></div>
+          </dl>
+          <ul class="tags"><li>Idempotency</li><li>Redis</li><li>Webhooks</li></ul>
+        </article>
+
+        <article class="project glass reveal">
+          <div class="project-top"><span class="area">Security</span></div>
+          <h3>Multi-tenant identity</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Secure sign-in for many tenants from one service.</dd></div>
+            <div><dt>Approach</dt><dd>Tenant resolution, per-tenant Auth0, MFA, Google and Apple sign-in, device sessions and signup-abuse controls.</dd></div>
+            <div><dt>Result</dt><dd>Built from the first release; later migrated to Spring Boot 3.5.</dd></div>
+          </dl>
+          <ul class="tags"><li>Spring Security</li><li>Auth0</li><li>OAuth 2.0</li></ul>
+        </article>
+
+        <article class="project glass reveal">
+          <div class="project-top"><span class="area">Compliance</span></div>
+          <h3>KYC provider migration</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Change identity-verification provider without disrupting users.</dd></div>
+            <div><dt>Approach</dt><dd>Resumable, idempotent batch tooling and signature-verified webhooks.</dd></div>
+            <div><dt>Result</dt><dd>2,366 approved users moved with no re-verification and no user notifications.</dd></div>
+          </dl>
+          <ul class="tags"><li>KYC / KYB</li><li>Batch</li><li>Webhooks</li></ul>
+        </article>
+
+        <article class="project glass reveal">
+          <div class="project-top"><span class="area">Real-time</span></div>
+          <h3>Live transaction tracking</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Users refreshed the page to see where their money was.</dd></div>
+            <div><dt>Approach</dt><dd>Events drive a per-transaction state machine, pushed over Server-Sent Events; the API contract came first.</dd></div>
+            <div><dt>Result</dt><dd>Every step shown as it happens, and the frontend built in parallel.</dd></div>
+          </dl>
+          <ul class="tags"><li>SSE</li><li>RabbitMQ</li><li>Redis</li></ul>
+        </article>
+      </div>
+
+      <a class="oss glass reveal" href="https://central.sonatype.com/artifact/com.seliseblocks.core/blocks-lmt-java-client" target="_blank" rel="noopener">
+        <div class="oss-left">
+          <span class="badge">Open source · Maven Central</span>
+          <h3>Blocks LMT Java Client</h3>
+          <p>A Spring Boot starter that auto-configures OpenTelemetry tracing and ships batched logs and spans to Azure Service Bus with retry. Two release lines (Spring Boot 2.7 and 3), used by 4 services.</p>
+        </div>
+        <span class="oss-arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+    <!-- ============ AI-ASSISTED ============ -->
+    <section id="ai" class="section">
+      <header class="section-head reveal">
+        <p class="kicker">03 · AI-assisted development</p>
+        <h2>Faster delivery, same engineering standards</h2>
+        <p class="sub">I use agentic AI tools in my daily work, and every change still passes tests and code review before it merges.</p>
+      </header>
+      <div class="ai-grid">
+        <div class="ai-main glass reveal">
+          <div class="term">
+            <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span>claude-code · worktree/feature-branch</span></div>
+<pre><code><span class="prompt">❯</span> plan the change, then wait for review
+<span class="dim">  reading context guide · 4 services</span>
+<span class="dim">  MCP: work-item tracker · KYC provider</span>
+<span class="prompt">❯</span> implement in an isolated git worktree
+<span class="ok">  ✓ unit tests  ✓ integration tests  ✓ build</span>
+<span class="prompt">❯</span> human code review → merge</code></pre>
+          </div>
+        </div>
+        <div class="ai-points">
+          <article class="ai-point glass reveal"><h3>Agentic workflows</h3><p>Claude Code with per-service context guides, MCP connections to the tools the team uses, and parallel agents in isolated git worktrees.</p></article>
+          <article class="ai-point glass reveal"><h3>Verify, don't trust</h3><p>AI output is treated like any external input: plans first, tests as the gate, human review before merge. I check claims against the code.</p></article>
+          <article class="ai-point glass reveal"><h3>Measured outcome</h3><p>98 pull requests merged across 3 repositories in 7 weeks.</p></article>
+          <article class="ai-point glass reveal learning"><h3>Currently building</h3><p>AI engineering skills on Java: RAG, LLM agents with tools, evals and MCP servers with Spring AI.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section id="architecture" class="section">
+      <header class="section-head reveal">
+        <p class="kicker">04 · System design</p>
+        <h2>How I design backend systems</h2>
+        <p class="sub">The reference shape I build toward: thin edges, independent services, events for side effects, and money that can only move once.</p>
+      </header>
+      <div class="arch glass reveal">
+        <svg viewBox="0 0 1040 360" role="img" aria-label="Reference backend architecture: clients, API gateway, services, event bus, workers and data stores">
+          <defs>
+            <linearGradient id="ag" gradientUnits="userSpaceOnUse" x1="150" y1="0" x2="900" y2="0"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+            <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#38bdf8"/></marker>
+          </defs>
+          <g class="flow" fill="none" stroke="url(#ag)" stroke-width="1.8" marker-end="url(#arw)">
+            <path d="M150 180 H210"/>
+            <path d="M370 180 H430"/>
+            <path d="M370 180 C400 180 400 80 430 80"/>
+            <path d="M370 180 C400 180 400 280 430 280"/>
+            <path d="M600 80 C640 80 640 180 680 180"/>
+            <path d="M600 180 H680"/>
+            <path d="M600 280 C640 280 640 180 680 180"/>
+            <path d="M840 180 H900"/>
+          </g>
+          <g class="lane"><rect x="20" y="140" width="130" height="80" rx="14"/><text class="t" x="85" y="176">Clients</text><text class="s" x="85" y="198">web · mobile</text></g>
+          <g class="lane hi"><rect x="210" y="130" width="160" height="100" rx="14"/><text class="t" x="290" y="166">API Gateway</text><text class="s" x="290" y="188">JWT · rate limits</text><text class="s" x="290" y="206">routing · tenant</text></g>
+          <g class="lane"><rect x="430" y="45" width="170" height="70" rx="14"/><text class="t" x="515" y="76">Identity service</text><text class="s" x="515" y="97">OAuth 2.0 · MFA · RBAC</text></g>
+          <g class="lane"><rect x="430" y="145" width="170" height="70" rx="14"/><text class="t" x="515" y="176">Ledger service</text><text class="s" x="515" y="197">double-entry · idempotent</text></g>
+          <g class="lane"><rect x="430" y="245" width="170" height="70" rx="14"/><text class="t" x="515" y="276">Trading service</text><text class="s" x="515" y="297">state machine · risk checks</text></g>
+          <g class="lane hi"><rect x="680" y="140" width="160" height="80" rx="14"/><text class="t" x="760" y="176">Event bus</text><text class="s" x="760" y="198">outbox · retries · DLQ</text></g>
+          <g class="lane"><rect x="900" y="140" width="120" height="80" rx="14"/><text class="t" x="960" y="176">Workers</text><text class="s" x="960" y="198">notify · reconcile</text></g>
+          <g class="store"><rect x="405" y="328" width="220" height="26" rx="13"/><text class="s" x="515" y="346">PostgreSQL · MongoDB · Redis</text></g>
+        </svg>
+        <ul class="arch-notes">
+          <li><strong>Edges stay thin:</strong> authentication, rate limits and tenant resolution happen once, at the gateway.</li>
+          <li><strong>Money moves once:</strong> idempotency keys, owner-checked locks and terminal-state guards.</li>
+          <li><strong>Side effects go through events:</strong> a transactional outbox, retries and dead-letter queues.</li>
+          <li><strong>Trust is verified:</strong> reconciliation workers compare against the source of truth.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="section">
+      <header class="section-head reveal">
+        <p class="kicker">05 · Experience</p>
+        <h2>Career</h2>
+      </header>
+      <ol class="timeline">
+        <li class="reveal">
+          <span class="when">Jan 2022 — Present</span>
+          <div class="what glass">
+            <h3>Software Engineer <span>· SELISE Digital Platforms</span></h3>
+            <p>Primary backend engineer of X4T, a multi-tenant crypto exchange (custody, payments, cross-chain swaps, perpetual futures) built as Java/Spring Boot and Node.js microservices on Azure Kubernetes Service.</p>
+            <ul>
+              <li>Built the multi-tenant identity service and the shared Java platform library every service depends on.</li>
+              <li>Delivered perpetual-futures trading, cross-chain swaps and a KYC/KYB provider migration.</li>
+              <li>Led security hardening after penetration testing; migrated services to Spring Boot 3.5.</li>
+              <li>Designed API contracts and integration guides for the frontend team.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="when">May 2021 — Jan 2022</span>
+          <div class="what glass">
+            <h3>Java Developer <span>· SELISE Digital Platforms</span></h3>
+            <p>Spring Boot REST APIs with Spring Data and third-party API integrations.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="when">2017 — 2022</span>
+          <div class="what glass">
+            <h3>B.Sc. in Computer Science and Engineering <span>· Southeast University</span></h3>
+            <p>Dhaka, Bangladesh.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section contact reveal">
+      <div class="contact-card glass">
+        <p class="kicker">06 · Contact</p>
+        <h2>Let's build something reliable.</h2>
+        <p class="sub">Hiring for a backend, fintech or platform role? I'd like to hear about it.</p>
+        <div class="cta center">
+          <a class="btn btn-primary" href="mailto:chowdury659@gmail.com">Contact Me</a>
+          <a class="btn btn-glass" href="assets/Poran_Chowdury_Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+        </div>
+        <ul class="socials">
+          <li><a href="https://github.com/poran-chowdury" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/poran-chowdury/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:chowdury659@gmail.com">chowdury659@gmail.com</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year">2026</span> Poran Chowdury · Dhaka, Bangladesh</span>
+    <span class="mono">Built with plain HTML, CSS and JavaScript</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
