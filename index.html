@@ -158,7 +158,7 @@
       <header class="section-head reveal">
         <p class="kicker">02 · Projects</p>
         <h2>Production work</h2>
-        <p class="sub">Features I built for X4T, a multi-tenant crypto exchange, at SELISE Digital Platforms.</p>
+        <p class="sub">Features I built and designed for X4T, a multi-tenant crypto exchange, at SELISE Digital Platforms.</p>
       </header>
 
       <div class="projects">
@@ -226,6 +226,17 @@
             <div><dt>Result</dt><dd>Every step shown as it happens, and the frontend built in parallel.</dd></div>
           </dl>
           <ul class="tags"><li>SSE</li><li>RabbitMQ</li><li>Redis</li></ul>
+        </article>
+
+        <article class="project glass reveal wide">
+          <div class="project-top"><span class="badge design">System design</span><span class="area">Payments</span><span class="area">Build next</span></div>
+          <h3>Card issuing for a crypto exchange</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Let users spend their crypto balance with a virtual card, while the exchange keeps custody of the card money.</dd></div>
+            <div><dt>Approach</dt><dd>A double-entry card ledger; top-up and withdraw as sagas across custody and the card issuer; a transactional outbox; idempotent, deduplicated webhooks; daily reconciliation and treasury float planning.</dd></div>
+            <div><dt>Result</dt><dd>Design approved by the client; implementation is the next step.</dd></div>
+          </dl>
+          <ul class="tags"><li>Double-entry ledger</li><li>Sagas</li><li>Outbox</li><li>Idempotency</li><li>Reconciliation</li></ul>
         </article>
       </div>
 

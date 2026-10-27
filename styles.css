@@ -167,6 +167,14 @@ h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.1; letter-spacing: -0.0
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
 .tags li { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--muted); padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border); }
 
+/* Full-width design card (planned work, not shipped) */
+.project.wide { grid-column: 1 / -1; border-style: dashed; border-color: rgba(34, 211, 238, 0.4); background: linear-gradient(135deg, rgba(34, 211, 238, 0.07), rgba(59, 130, 246, 0.05)); }
+.project.wide dl { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.project.wide dl div { grid-template-columns: 1fr; gap: 4px; align-content: start; }
+.project.wide dl { flex: none; align-items: start; }
+.badge.design { background: transparent; color: var(--cyan); border: 1px solid rgba(34, 211, 238, 0.5); }
+@media (max-width: 960px) { .project.wide dl { grid-template-columns: 1fr; gap: 10px; } }
+
 .oss { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-top: 18px; padding: 28px; transition: border-color 0.2s, transform 0.2s; }
 .oss:hover { border-color: var(--sky); transform: translateY(-3px); }
 .oss h3 { font-size: 21px; margin: 12px 0 8px; }
